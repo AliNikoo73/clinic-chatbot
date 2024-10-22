@@ -1,0 +1,9 @@
+# Ignore virtual environment folder
+chatbot_env/
+
+# Ignore .env file
+.env
+
+# Ignore system files
+__pycache__/
+*.pyc
