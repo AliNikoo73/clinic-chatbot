@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Test</title>
+</head>
+<body>
+    <h1>Chatbot Real-Time Interaction</h1>
+    <input type="text" id="messageInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <p id="response"></p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        var socket = io('http://localhost:5000');
+        
+        socket.on('response', function(data) {
+            document.getElementById('response').innerText = data.message;
+        });
+
+        function sendMessage() {
+            var message = document.getElementById('messageInput').value;
+            socket.emit('message', { user_email: "user@example.com", text: message });
+        }
+    </script>
+</body>
+</html>
